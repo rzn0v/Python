@@ -12,9 +12,7 @@ missing_states = []
 while len(guessed_state)<50:
     ans_state = screen.textinput(title=f"{len(guessed_state)}/50 states guessed", prompt="Type the state").title()
     if ans_state == "Exit":
-        for states in all_states:
-            if states not in guessed_state:
-                missing_states.append(states)
+        missing_states = [state for state in all_state if state not in guessed_states]
 
         new_data = pd.DataFrame(missing_states)
         new_data.to_csv("states_to_learn.csv")
